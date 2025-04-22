@@ -48,6 +48,6 @@ cat /root/.ssh/id_ed25519.pub
 echo ">>> When you are done, Press Enter to continue >>>"
 read
 
-git clone git@github.com:cbcmortgage/cbclms.git
+git clone git@github.com:cbcmortgage/cbclms.git || true
 
-bash cbcmortgage/install_cbc_1.sh
+bash /root/cbclms/install/install_cbc_1.sh
