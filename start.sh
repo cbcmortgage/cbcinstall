@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo -e "\n*** Updating APT Catalog\n"
 apt update
 
