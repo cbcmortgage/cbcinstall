@@ -1,5 +1,19 @@
 #!/bin/bash
 
+# THIS FILE IS A COPY OF THE STARTUP SCRIPT FOR THE CBC INSTALLATION
+# The REAL `start.sh` lives at:
+
+# https://github.com/cbcmortgage/cbcinstall/blob/main/start.sh
+
+# What does it do?
+# 1. It updates the APT catalog
+# 2. It installs openssh-client
+# 3. It generates an ED25519 SSH key pair for the system
+# 4. The user must add the public key to the cbcmortgage repository as a deploy key
+#    (this is done manually by the user after the script runs)
+# 5. It clones the cbclms repository
+# 6. It runs the install scripts for CBC LMS
+
 set -e
 
 echo -e "\n*** Updating APT Catalog\n"
@@ -48,6 +62,11 @@ cat /root/.ssh/id_ed25519.pub
 echo ">>> When you are done, Press Enter to continue >>>"
 read
 
-git clone git@github.com:cbcmortgage/cbclms.git || true
+if [[ -d "/root/cbclms" ]]; then
+    echo "- LOCAL DEV MODE, repo found locally"
+else
+    echo "- PRODUCTION MODE, cloning cbcmortgage/cbclms"
+    git clone git@github.com:cbcmortgage/cbclms.git || true
+fi
 
 bash /root/cbclms/install/install_cbc_1.sh
