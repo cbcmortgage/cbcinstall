@@ -16,12 +16,9 @@
 
 set -e
 
-echo -e "\n########################\n#  CBC INSTALL LOADER  #\n########################\n\n"
-
-echo -e "\n*** Updating APT Catalog\n"
-apt update
-
-echo -e "\n\n*** Installing openssh\n"
+echo -e "\n########################\n#  CBC INSTALL LOADER  #\n# Preparing to install #\n########################"
+                                                               
+echo -e "\n\n*** Adding openssh\n"
 apt install -y openssh-client
 
 echo -e "\n\n*** Generating Key\n";
@@ -65,9 +62,9 @@ echo ">>> When you are done, Press Enter to continue >>>"
 read
 
 if [[ -d "/root/cbclms" ]]; then
-    echo "- LOCAL DEV MODE, repo found locally"
+    echo "> LOCAL DEV MODE, repo found locally"
 else
-    echo "- PRODUCTION MODE, cloning cbcmortgage/cbclms"
+    echo "> PRODUCTION MODE, cloning cbcmortgage/cbclms"
     git clone git@github.com:cbcmortgage/cbclms.git || true
 fi
 
