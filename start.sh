@@ -16,6 +16,8 @@
 
 set -e
 
+echo -e "\n########################\n#  CBC INSTALL LOADER  #\n########################\n\n
+
 echo -e "\n*** Updating APT Catalog\n"
 apt update
 
