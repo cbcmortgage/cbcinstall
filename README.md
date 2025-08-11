@@ -1,6 +1,6 @@
 # cbc install loader
 
-This repo is a public entrypoint for startign the installation. Access to this repo does not grant access to any data or code.
+This repo is a public entrypoint for starting the installation. Access to this repo does not grant access to any data or code.
 
 ## Instructions
 
