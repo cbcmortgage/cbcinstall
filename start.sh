@@ -55,16 +55,19 @@ fi
 
 echo "*** SSH key created and set as default for github.com."
 
-echo -e "\n\nPlease add this deploy key to the "cbcmortgage" repo:\n"
-cat /root/.ssh/id_ed25519.pub
-
-echo -e "\n- When you are done, Press Enter to continue\n- If you are testing in docker, go ahead and hit enter\n\n>"
-read
-
 if [[ -d "/root/cbclms" ]]; then
     echo "> LOCAL DEV MODE, repo found locally"
 else
-    echo "> PRODUCTION MODE, cloning cbcmortgage/cbclms"
+    echo "> PRODUCTION MODE"
+
+    echo -e "\n\nPlease add this deploy key to the "cbcmortgage" repo:\n"
+    cat /root/.ssh/id_ed25519.pub
+
+    echo -e "\n*** When you are done, Press Enter to continue\n\n"
+    echo "> "
+    read
+
+    echo ">  cloning cbcmortgage/cbclm"
     git clone git@github.com:cbcmortgage/cbclms.git || true
 fi
 
